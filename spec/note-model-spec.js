@@ -7,7 +7,6 @@ function testContentOnInstantiation() {
   } else {
     console.log(".");
   }
-  console.log(JSON.stringify(note));
 };
 
 testContentOnInstantiation();
