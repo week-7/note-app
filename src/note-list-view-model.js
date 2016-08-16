@@ -1,18 +1,22 @@
 
+document.addEventListener('DOMContentLoaded', function() {
+  var View = (function() {
 
-(function(exports) {
+    return {
+        HTMLstring: function() {
+          List.getList();
+          var output = '';
+          var list = List.readListContent();
+          var lists = document.getElementById('list');
+          for (var i = 0; i < list.length; i++) {
+           output += '<li>' + list[i] + '</li>';
+          }
+          lists.innerHTML = output;
+        }
 
-  function View(list) {}
+      };
 
-  View.prototype.returnHTMLString = function() {
-    output = '<ul>';
-    list.listContent.forEach(function(note) {
-      output += '<li>' + note.noteContent + '</li>';
-    });
-    output += '</ul>';
-    return output;
-  };
+    })();
 
-  exports.view = View;
-
-})(this)
+   View.HTMLstring();
+});

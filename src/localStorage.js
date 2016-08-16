@@ -1,16 +1,14 @@
-(function(exports) {
+var localStorage = (function() {
 
-  function LocalStorage() {
-    this.storage = {};
-  }
+  var storage = {};
 
-  LocalStorage.prototype.getItem = function(item) {
-    return this.storage[item];
+  return {
+    getItem: function(item) {
+      return storage[item];
+    },
+    setItem: function(key, value) {
+      storage[key] = value;
+    }
   };
 
-  LocalStorage.prototype.setItem = function(key, value) {
-    this.storage[key] = value;
-  };
-
-  exports.localStorage = LocalStorage;
-})(this);
+})();
