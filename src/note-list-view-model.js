@@ -4,16 +4,22 @@ var View = (function() {
 
   return {
       HTMLstring: function() {
+        List.getList();
+        var output = '';
         var list = List.readListContent();
-        var lists = document.getElementsByTagName('li');
+        var lists = document.getElementById('list');
         for (var i = 0; i < list.length; i++) {
-             lists[i].innerHTML = list[i];
+         output += '<li>' + list[i] + '</li>';
+        }
+        console.log(output);
+        lists.innerHTML = output;
+
       }
-    }
-  };
+
+    };
+
   })();
 
-List.getList();
  View.HTMLstring();
 
 //
