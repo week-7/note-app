@@ -1,10 +1,7 @@
-var Note = require('../src/note-model').note;
-var LocalStorage = require('../src/localStorage').localStorage;
-
 
 (function testContentOnInstantiation() {
   var note = new Note("Hey");
-  if (note.noteContent !== "Hey") {
+  if (note.printNote() !== "Hey") {
     throw new Error("Text of the note was note taken on instantiation");
   } else {
     console.log(".");
