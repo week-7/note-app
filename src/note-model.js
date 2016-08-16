@@ -1,22 +1,25 @@
 // 'use strict';
 
-(function (exports) {
+var Note = (function (text) {
 
-  function Note(noteContent) {
-    this.noteContent = noteContent;
-  }
+  var noteContent = text;
+
 
   // Note.prototype.saveNote = function(localStorage) {
   //   localStorage.setItem('noteContent', this.noteContent);
   // };
+ return {
 
-  Note.prototype.readNote = function() {
-    return this.noteContent;
-  };
+  saveText: function(text) {
+    noteContent = text;
+  },
+  printNote: function() {
+              return noteContent;
+              }
+    };
   //
   // Note.prototype.getNote = function() {
   //   return localStorage.getItem('noteContent');
   // };
 
-  exports.note = Note;
-})(this);
+});
