@@ -1,7 +1,8 @@
+var List = require('../src/note-list-model').list;
 
 (function initiallylistisempty() {
   var list = new List();
-  if (list.listContent !== []) {
+  if (list.listContent.length !== 0) {
     throw new Error("not an empty array");
   } else {
     console.log(".");
