@@ -3,13 +3,13 @@ var List = (function () {
   var listContent = [];
 
   function addNote(note) {
-      listContent.push(note.printNote());
+      var text = note.printNote()
+      listContent.push(text);
     }
 
   return {
    createNote: function(text) {
-            note = new Note();
-            note.saveText(text);
+            var note = new Note(text);
             addNote(note);
           },
     saveList: function() {
@@ -26,6 +26,9 @@ var List = (function () {
     getList: function() {
       retrievedNotes = localStorage.getItem('List');
       listContent = JSON.parse(retrievedNotes);
+      if(listContent === null) {
+        listContent = []
+      }
     }
      };
 })();

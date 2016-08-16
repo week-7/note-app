@@ -1,4 +1,4 @@
-
+//
 // (function testContentOnInstantiation() {
 //   var note = new Note("Hey");
 //   if (note.printNote() !== "Hey") {
@@ -20,7 +20,28 @@
 //   }
 // })();
 
-mossPiglet.explore('this is a unit test');
-mossPiglet.test('details of the test');
-mossPiglet.isEqual(1, "undefined");
-mossPiglet.isNotEqual(1, 2);
+var explore = kiwi.explore;
+var test = kiwi.test;
+
+explore('Creating a new note', function(){
+  test('note content is added on instantiation', function() {
+    var note = new Note("Hey");
+    kiwi.isEqual(note.printNote() === "Hey");
+  });
+});
+
+explore('Creating a new note', function(){
+  test('note content is added on instantiation', function() {
+    var note = new Note("Hey");
+    kiwi.isEqual(note.printNote() === "Hey");
+  });
+});
+
+
+// mossPiglet.isEqual(1, "undefined");
+// mossPiglet.isNotEqual(1, 2);
+//
+// mossPiglet.explore('Creating a new note');
+// mossPiglet.test('note content is added on instantiation')
+// var note = new Note('hey')
+// mossPiglet.
