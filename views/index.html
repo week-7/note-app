@@ -10,10 +10,25 @@
 </head>
 <body>
   <h1>KiwiNotes</h1>
-  <textarea></textaarea>
-  <button>Save</button>
+  <textarea id='textarea'></textarea>
+  <button id='saveButton'>Save</button>
    <h2>Your list of notes</h2>
-     <ul id="list">
-     </ul>
+     <div id="list">
+     </div>
+    <script>
+
+    (function addNote(){
+      document
+        .getElementById('saveButton')
+        .addEventListener('click', function(clickEvent){
+          clickEvent.preventDefault();
+          List.createNote(document.getElementById('textarea').value);
+          View.noteList();
+        });
+    })();
+    </script>
   </body>
 </html>
+
+ <!-- onload= 'createNote();' -->
+ <!-- document.getElementById("myTextarea").value = "Fifth Avenue, New York City"; -->
