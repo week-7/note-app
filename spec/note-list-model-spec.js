@@ -1,21 +1,17 @@
-var List = require('../src/note-list-model').list;
+var explore = kiwi.explore;
+var test = kiwi.test;
 
-(function initiallylistisempty() {
-  var list = new List();
-  if (list.listContent.length !== 0) {
-    throw new Error("not an empty array");
-  } else {
-    console.log(".");
-  }
-})();
 
-(function createsNewNote() {
-  var list = new List();
-  list.createNote("note text");
-  list.addNote();
-    if (list.listContent.length === 0) {
-      throw new Error("Did not create a new note");
-    } else {
-      console.log(".");
-    }
-})();
+
+explore('List', function(){
+  test('Initially is empty', function() {
+    localStorage.removeItem('TestList'); //Deletes list every time
+    var list = List.ListContent();
+    kiwi.isEqual(list.length === 0);
+  });
+  test('creates a note and stores in listContent', function() {
+    List.createNote("Hey");
+    var list = List.ListContent();
+    kiwi.isEqual(list.pop() === "Hey");
+  });
+});

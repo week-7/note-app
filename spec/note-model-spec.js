@@ -1,21 +1,9 @@
+var explore = kiwi.explore;
+var test = kiwi.test;
 
-(function testContentOnInstantiation() {
-  var note = new Note("Hey");
-  if (note.printNote() !== "Hey") {
-    throw new Error("Text of the note was note taken on instantiation");
-  } else {
-    console.log(".");
-  }
-})();
-
-(function savingContent() {
-  var note = new Note("Hey");
-  var storage = new LocalStorage();
-  note.saveNote(storage);
-  var retrievedObject = storage.getItem('noteContent');
-  if (retrievedObject !== "Hey") {
-    throw new Error("Text of the note was not saved");
-  } else {
-    console.log(".");
-  }
-})();
+explore('Creating a new note', function(){
+  test('note content is added on instantiation', function() {
+    var note = new Note("Hey");
+    kiwi.isEqual(note.printNote() === "Hey");
+  });
+});

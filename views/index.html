@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <title>Notes</title>
-   <script src="../src/note-list-model.js"></script>
-   <script src="../src/note-model.js"></script>
-   <script src="../src/note-list-view-model.js"></script>
-</head>
-<body>
-   <h1>Text</h1>
-     <ul id="list">
-     </ul>
-   
+  <head>
+    <meta charset="UTF-8">
+    <title>Notes</title>
+    <link rel="stylesheet" href="../stylesheets/stylesheet.css">
+    <script src="../src/note-model.js"></script>
+    <script src="../src/note-list-model.js"></script>
+    <script src="../src/note-list-view-model.js"></script>
+    <script src="../src/note-controller.js"></script>
+  </head>
+  <body>
+    <div class='app'>
+      <h1>KiwiNotes</h1>
+      <div id="enterMessage">
+        <div id="addNoteText">
+          <textarea id='textarea'></textarea>
+        </div>
+        <div id="addNoteButton">
+          <button id='saveButton'>Save</button>
+        </div>
+      </div>
+
+      <div id="singleNote"></div>
+
+      <div id="listSection">
+        <h2>Your list of notes</h2>
+        <div id="list"></div>
+      </div>
+    </div>
   </body>
 </html>
+
+ <!-- onload= 'createNote();' -->
+ <!-- document.getElementById("myTextarea").value = "Fifth Avenue, New York City"; -->

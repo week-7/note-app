@@ -1,4 +1,3 @@
-
 var List = (function () {
 
   var listContent = [];
@@ -9,11 +8,11 @@ var List = (function () {
     }
 
   function saveList() {
-      localStorage.setItem('List', JSON.stringify(listContent));
+      localStorage.setItem('TestList', JSON.stringify(listContent));
     }
 
   function getList() {
-      retrievedNotes = localStorage.getItem('List');
+      retrievedNotes = localStorage.getItem('TestList');
       listContent = JSON.parse(retrievedNotes);
       if(listContent === null) {
       listContent = [];
@@ -27,10 +26,10 @@ var List = (function () {
       saveList();
     },
 
-    readListContent: function() {
+    ListContent: function() {
       getList();
       return listContent;
-    }
+    },
   };
 
 })();

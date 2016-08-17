@@ -1,3 +1,4 @@
+
 (function testContentOnInstantiation() {
   var note = new Note("Hey");
   if (note.printNote() !== "Hey") {

@@ -5,13 +5,9 @@ var Note = (function (text) {
 
 
  return {
-
-  saveText: function(text) {
-    noteContent = text;
-  },
   printNote: function() {
-              return noteContent;
-              }
+        return noteContent;
+      }
     };
 
 });
