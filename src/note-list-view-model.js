@@ -1,23 +1,31 @@
 
   var View = (function() {
 
-    return {
-        noteList: function() {
-          var elem = document.getElementById('list');
-          while (elem.hasChildNodes())
-            elem.removeChild(elem.firstChild);
+        function removeList() {
+          var divList = document.getElementById('list');
+          while (divList.hasChildNodes())
+            divList.removeChild(divList.firstChild);
+        }
+
+        function printNoteLinks() {
           var list = List.readListContent();
           for (var i = 0; i < list.length; i++) {
             var listDiv = document.createElement('div');
             var listLink = document.createElement('a');
+            var listText = document.createTextNode(list[i].substr(0,20) + '...');
             listLink.setAttribute('href', '#' + i );
-            var listText = document.createTextNode(list[i].substr(0,20));
             listLink.appendChild(listDiv);
             listDiv.appendChild(listText);
             document.getElementById('list').appendChild(listLink);
           }
         }
-      };
+
+    return {
+        noteList: function() {
+          removeList();
+          printNoteLinks();
+      }
+    };
 
     })();
    
