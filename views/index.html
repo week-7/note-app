@@ -10,23 +10,18 @@
 </head>
 <body>
   <h1>KiwiNotes</h1>
-  <textarea id='textarea'></textarea>
-  <button id='saveButton'>Save</button>
-   <h2>Your list of notes</h2>
-     <div id="list">
-     </div>
-    <script>
+  <div id="enterMessage">
+    <textarea id='textarea'></textarea>
+    <button id='saveButton'>Save</button>
+  </div>
 
-    (function addNote(){
-      document
-        .getElementById('saveButton')
-        .addEventListener('click', function(clickEvent){
-          clickEvent.preventDefault();
-          List.createNote(document.getElementById('textarea').value);
-          View.noteList();
-        });
-    })();
-    </script>
+  <div id="singleNote"></div>
+
+  <div id="listSection">
+    <h2>Your list of notes</h2>
+    <div id="list"></div>
+  </div>
+
   </body>
 </html>
 

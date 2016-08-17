@@ -8,8 +8,9 @@
             elem.removeChild(elem.firstChild);
           var list = List.readListContent();
           for (var i = 0; i < list.length; i++) {
-            var listLink = document.createElement('a');
             var listDiv = document.createElement('div');
+            var listLink = document.createElement('a');
+            listLink.setAttribute('href', '#' + i );
             var listText = document.createTextNode(list[i]);
             listLink.appendChild(listDiv);
             listDiv.appendChild(listText);
