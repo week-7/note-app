@@ -1,41 +1,35 @@
 
 var kiwi = (function () {
   var list = document.getElementById('test');
-  var space = "--"
   list.innerHTML = '';
-  // function isUndefined(value){
-  //   if (value === "undefined") {
-  //     return value + ": Is undefined";
-  //   }
-  // }
+
 return{
   explore: function (context, testFunction) {
-  list.innerHTML += '<li>' + context + '</li>';
-  testFunction();
+    list.innerHTML += '<b><li>' + context + '</li></b>';
+    testFunction();
   },
 
   test: function (details, testFunction) {
-  list.innerHTML += '<li>' + space + details + '</li>';
-  testFunction(details);
+    list.innerHTML += '<em><dt>' + details + '</dt></em>';
+    testFunction(details);
   },
 
   isEqual: function (expectation) {
-    // isUndefined(result)
     if (expectation) {
-      toBeEqual = "Pass, values are the same";
+      msg = "Pass: " + expectation;
     } else {
-      toBeEqual = "Fail, values aren't equal";
+      msg = "Fail: " + expectation;
     }
-    list.innerHTML += '<li>' + space + toBeEqual + '</li>';
+    list.innerHTML += '<dd>' + msg + '</dd>';
   },
 
   isNotEqual: function (expectation) {
     if (expectation) {
-      toBeEqual = "Pass, " + result + " is not equal to " + expectation;
+      msg = "Pass: " + expectation;
     } else {
-      toBeEqual = "Fail, " + result +  " is equal " + expectation;
+      msg = "Fail: " + expectation;
     }
-    list.innerHTML += '<li>' + space + toBeEqual + '</li>';
+    list.innerHTML += '<dd>' + msg + '</dd>';
   }
 
 };

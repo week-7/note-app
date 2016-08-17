@@ -1,22 +1,17 @@
 
-document.addEventListener('DOMContentLoaded', function() {
   var View = (function() {
 
     return {
-        HTMLstring: function() {
-          List.getList();
-          var output = '';
+        noteList: function() {
           var list = List.readListContent();
-          var lists = document.getElementById('list');
-        if(list !== null) {
           for (var i = 0; i < list.length; i++) {
-           output += '<li>' + list[i] + '</li>';
-            }
-          lists.innerHTML = output;
+            var newList = document.createElement('li');
+            var liText = document.createTextNode(list[i]);
+            newList.appendChild(liText);
+            document.getElementById('list').appendChild(newList);
+          }
         }
-      }
       };
 
     })();
-   View.HTMLstring();
-});
+   

@@ -1,3 +1,4 @@
-  var welcome = document.getElementById("app")
-  // console.log(welcome);
-  welcome.innerHTML = "Howdy"
+document.addEventListener('DOMContentLoaded', function() {
+
+        View.noteList();
+});
