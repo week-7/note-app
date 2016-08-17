@@ -11,7 +11,7 @@
             var listDiv = document.createElement('div');
             var listLink = document.createElement('a');
             listLink.setAttribute('href', '#' + i );
-            var listText = document.createTextNode(list[i]);
+            var listText = document.createTextNode(list[i].substr(0,20));
             listLink.appendChild(listDiv);
             listDiv.appendChild(listText);
             document.getElementById('list').appendChild(listLink);
