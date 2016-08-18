@@ -9,7 +9,8 @@ class KiwiNotes < Sinatra::Base
   end
 
   get '/note' do
-    "Hello World"
+    notes = Note.all
+    return notes.to_json unless notes == nil
   end
 
   post '/note' do

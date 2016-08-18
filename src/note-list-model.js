@@ -4,7 +4,6 @@ var List = (function () {
 
   function addNote(note) {
       var text = note.printNote();
-
       var xhttp = new XMLHttpRequest();
       xhttp.open("POST", 'http://localhost:4567/note');
       xhttp.setRequestHeader('Content-Type','text/plain');
@@ -12,13 +11,7 @@ var List = (function () {
 
     }
 
-  function getList() {
-      retrievedNotes = localStorage.getItem('List');
-      listContent = JSON.parse(retrievedNotes);
-      if(listContent === null) {
-      listContent = [];
-        }
-    }
+
 
   return {
     createNote: function(text) {
@@ -27,10 +20,30 @@ var List = (function () {
       // saveList();
     },
 
+    getList: function() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState == 4 && xhttp.status == 200) {
+              var data = JSON.parse(xhttp.responseText);
+              var tempList = [];
+              data.forEach(function(object) {
+                tempList.push(object);
+              });
+              // listContent = tempList;
+              console.log(listContent);
+          }
+        };
+        xhttp.open("GET", 'http://localhost:4567/note');
+        xhttp.send();
+        // if(listContent === null) {
+        // listContent = [];
+        //   }
+      },
+
     readListContent: function() {
-      getList();
       return listContent;
     }
+
   };
 
 })();
