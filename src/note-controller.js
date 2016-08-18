@@ -15,7 +15,20 @@ document.addEventListener('DOMContentLoaded', function() {
     })();
 
     function showNoteForCurrentPage() {
-      showNote(getNoteFromUrl(window.location));
+      if (window.location.hash == "") {
+        View.noteList();
+        document
+          .getElementById('listSection')
+          .removeAttribute('hidden');
+        document
+          .getElementById('enterMessage')
+          .removeAttribute('hidden');
+        document
+          .getElementById('singleNote')
+          .innerHTML = "";
+      } else {
+        showNote(getNoteFromUrl(window.location));
+      }
     }
 
     function getNoteFromUrl(location) {
