@@ -1,8 +1,6 @@
 var explore = kiwi.explore;
 var test = kiwi.test;
 
-
-
 explore('List', function(){
   test('Initially is empty', function() {
     localStorage.removeItem('TestList'); //Deletes list every time
