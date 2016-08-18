@@ -8,8 +8,9 @@
         }
 
         function printNoteLinks() {
-          var list = List.readListContent();
-          console.log(list)
+          var list;
+          setTimeout(function() {
+          list = List.readListContent();
           for (var i = 0; i < list.length; i++) {
             var listDiv = document.createElement('div');
             var listLink = document.createElement('a');
@@ -19,6 +20,7 @@
             listDiv.appendChild(listText);
             document.getElementById('list').appendChild(listLink);
           }
+        },100);
         }
 
     return {
