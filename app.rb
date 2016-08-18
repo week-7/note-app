@@ -4,14 +4,16 @@ require 'json'
 
 class KiwiNotes < Sinatra::Base
 
+  before do
+     headers 'Access-Control-Allow-Origin' => '*'
+  end
+
   get '/note' do
     "Hello World"
   end
 
   post '/note' do
-    # response['Access-Control-Allow-Origin'] = '*'
-    note = Note.create(content: params[:content])
-    note.to_json(:only => [:content])
+    note = Note.create(content: request.body.read)
     redirect '/note'
   end
 
