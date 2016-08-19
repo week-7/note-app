@@ -17,7 +17,7 @@ var List = (function () {
       saveNote(note);
     },
 
-    getList: function() {
+    getList: function(callback) {
         listContent = [];
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -30,6 +30,7 @@ var List = (function () {
         };
         xhttp.open("GET", 'http://localhost:4567/note');
         xhttp.send();
+        callback();
       },
 
     readListContent: function() {

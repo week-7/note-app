@@ -6,8 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
         .addEventListener('click', function(clickEvent){
           clickEvent.preventDefault();
           List.createNote(document.getElementById('textarea').value);
-              List.getList();
-              View.noteList();
+          List.getList(function() {
+             View.noteList();
+          });
+
         });
     })();
 
@@ -54,7 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
         .innerHTML = "";
       }
 
-        List.getList();
-        View.noteList();
+      List.getList(function() {
+         View.noteList();
+      });
+
 
 });
