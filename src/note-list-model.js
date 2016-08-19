@@ -2,7 +2,7 @@ var List = (function () {
 
   var listContent = [];
 
-  function addNote(note) {
+  function saveNote(note) {
       var text = note.printNote();
       var xhttp = new XMLHttpRequest();
       xhttp.open("POST", 'http://localhost:4567/note');
@@ -13,7 +13,7 @@ var List = (function () {
   return {
     createNote: function(text) {
       var note = new Note(text);
-      addNote(note);
+      saveNote(note);
     },
 
     getList: function() {
@@ -25,8 +25,6 @@ var List = (function () {
               data.forEach(function(object) {
                 listContent.push(object);
               });
-              console.log("getlist");
-              console.log(listContent);
           }
         };
         xhttp.open("GET", 'http://localhost:4567/note');

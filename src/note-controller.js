@@ -16,14 +16,19 @@ document.addEventListener('DOMContentLoaded', function() {
     })();
 
     function showNoteForCurrentPage() {
-      showNote(getNoteFromUrl(window.location));
-    }
+      var url = getNoteFromUrl(window.location)
+        if (window.location.hash == "") {
+        showNoteList(url)
+      } else {
+      showSingleNote(url);
+      }
+   }
 
     function getNoteFromUrl(location) {
       return location.hash.split('#')[1];
     }
 
-    function showNote(note) {
+    function showSingleNote(note) {
       var list = List.readListContent();
       document
         .getElementById('singleNote')
@@ -35,6 +40,19 @@ document.addEventListener('DOMContentLoaded', function() {
         .getElementById('enterMessage')
         .setAttribute('hidden', true);
     }
+
+    function showNoteList(note) {
+      View.noteList();
+           document
+             .getElementById('listSection')
+             .removeAttribute('hidden');
+           document
+             .getElementById('enterMessage')
+             .removeAttribute('hidden');
+           document
+             .getElementById('singleNote')
+             .innerHTML = "";
+      }
 
         List.getList();
         View.noteList();
