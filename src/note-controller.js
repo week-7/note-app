@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
     })();
 
     function showNoteForCurrentPage() {
-      var url = getNoteFromUrl(window.location)
-        if (window.location.hash == "") {
-        showNoteList(url)
+      var url = getNoteFromUrl(window.location);
+      if (window.location.hash === "") {
+        showNoteList(url);
       } else {
-      showSingleNote(url);
+        showSingleNote(url);
       }
    }
 
@@ -43,15 +43,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showNoteList(note) {
       View.noteList();
-           document
-             .getElementById('listSection')
-             .removeAttribute('hidden');
-           document
-             .getElementById('enterMessage')
-             .removeAttribute('hidden');
-           document
-             .getElementById('singleNote')
-             .innerHTML = "";
+      document
+        .getElementById('listSection')
+        .removeAttribute('hidden');
+      document
+        .getElementById('enterMessage')
+        .removeAttribute('hidden');
+      document
+        .getElementById('singleNote')
+        .innerHTML = "";
       }
 
         List.getList();
