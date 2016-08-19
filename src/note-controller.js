@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var list = List.readListContent();
       document
         .getElementById('singleNote')
-        .innerHTML = list[note];
+        .innerHTML = list[note].content;
       document
         .getElementById('listSection')
         .setAttribute('hidden', true);
