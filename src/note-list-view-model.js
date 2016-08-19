@@ -6,20 +6,22 @@ var View = (function() {
     while (divList.hasChildNodes())
       divList.removeChild(divList.firstChild);
   }
+        function printNoteLinks() {
+          var list;
+          setTimeout(function() {
+          list = List.readListContent();
+          for (var i = 0; i < list.length; i++) {
+            var listDiv = document.createElement('div');
+            var listLink = document.createElement('a');
+            var listText = document.createTextNode(list[i].content.substr(0,20) + '...');
+            listLink.setAttribute('href', '#' + i );
+            listLink.appendChild(listDiv);
+            listDiv.appendChild(listText);
+            document.getElementById('list').appendChild(listLink);
+          }
+        },100);
+        }
 
-  function printNoteLinks() {
-    var list = List.readListContent();
-    for (var i = 0; i < list.length; i++) {
-      var listDiv = document.createElement('div');
-      var listLink = document.createElement('a');
-      var listText = document.createTextNode(list[i].substr(0,20) + '...');
-      listLink.setAttribute('href', '#' + i );
-      listLink.appendChild(listDiv);
-      listDiv.appendChild(listText);
-      listDiv.setAttribute('class', 'note')
-      document.getElementById('list').appendChild(listLink);
-    }
-  }
 
   return {
     noteList: function() {

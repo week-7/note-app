@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
         .addEventListener('click', function(clickEvent){
           clickEvent.preventDefault();
           List.createNote(document.getElementById('textarea').value);
-          View.noteList();
+              List.getList();
+              View.noteList();
         });
     })();
 
@@ -15,7 +16,8 @@ document.addEventListener('DOMContentLoaded', function() {
     })();
 
     function showNoteForCurrentPage() {
-      if (window.location.hash == "") {
+
+      if (window.location.hash === "") {
         View.noteList();
         document
           .getElementById('listSection')
@@ -31,15 +33,22 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    function getNoteFromUrl(location) {
-      return location.hash.split('#')[1];
-    }
+      var url = getNoteFromUrl(window.location);
+        if (window.location.hash === "") {
+        showNoteList(url);
+      } else {
+      showSingleNote(url);
+      }
 
-    function showNote(note) {
+    function getNoteFromUrl(location){
+      return location.hash.split('#')[1];
+   }
+
+    function showSingleNote(note) {
       var list = List.readListContent();
       document
         .getElementById('singleNote')
-        .innerHTML = list[note];
+        .innerHTML = list[note].content;
       document
         .getElementById('listSection')
         .setAttribute('hidden', true);
@@ -48,5 +57,20 @@ document.addEventListener('DOMContentLoaded', function() {
         .setAttribute('hidden', true);
     }
 
+    function showNoteList(note) {
+      View.noteList();
+           document
+             .getElementById('listSection')
+             .removeAttribute('hidden');
+           document
+             .getElementById('enterMessage')
+             .removeAttribute('hidden');
+           document
+             .getElementById('singleNote')
+             .innerHTML = "";
+      }
+
+        List.getList();
         View.noteList();
+
 });

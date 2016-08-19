@@ -3,34 +3,39 @@ var List = (function () {
 
   var listContent = [];
 
-  function addNote(note) {
+  function saveNote(note) {
       var text = note.printNote();
-      listContent.push(text);
-    }
-
-  function saveList() {
-      localStorage.setItem('List', JSON.stringify(listContent));
-    }
-
-  function getList() {
-      retrievedNotes = localStorage.getItem('List');
-      listContent = JSON.parse(retrievedNotes);
-      if(listContent === null) {
-      listContent = [];
-        }
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("POST", 'http://localhost:4567/note');
+      xhttp.setRequestHeader('Content-Type','text/plain');
+      xhttp.send(text);
     }
 
   return {
     createNote: function(text) {
       var note = new Note(text);
-      addNote(note);
-      saveList();
+      saveNote(note);
     },
 
+    getList: function() {
+        listContent = [];
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (xhttp.readyState == 4 && xhttp.status == 200) {
+              var data = JSON.parse(xhttp.responseText);
+              data.forEach(function(object) {
+                listContent.push(object);
+              });
+          }
+        };
+        xhttp.open("GET", 'http://localhost:4567/note');
+        xhttp.send();
+      },
+
     readListContent: function() {
-      getList();
       return listContent;
     }
+
   };
 
 })();
